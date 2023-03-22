@@ -1,0 +1,21 @@
+---
+title: "Questions 1 and 2"
+author: "Heywood Williams-Tracy"
+date: "`r sys.Date()`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(gganimate)
+library(ggpubr)
+library(vctrs)
+```
+```{r}
+cbb <- read.csv("CollegeBasketball.csv")
+```
+
+Question 1:
+```{r}
+```
