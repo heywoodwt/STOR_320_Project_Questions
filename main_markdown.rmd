@@ -1,7 +1,7 @@
 ---
 title: "Questions 1 and 2"
 author: "Heywood Williams-Tracy"
-date: "`r sys.Date()`"
+date: "`r Sys.Date()`"
 output: html_document
 ---
 
@@ -11,11 +11,25 @@ library(tidyverse)
 library(gganimate)
 library(ggpubr)
 library(vctrs)
+library(corrplot)
 ```
-```{r}
+```{r, eval=T  }
 cbb <- read.csv("CollegeBasketball.csv")
 ```
 
-Question 1:
-```{r}
+Question 7: What is the correlation between Adjusted Offensive Efficiency and Adjusted Defensive Efficiency for each team?
+```{r, eval=TRUE, echo=TRUE, message=FALSE, warning=FALSE}
+team_corr <- cbb %>%
+  group_by(TEAM) %>%
+  summarise(cor = cor(ADJOE, ADJDE))
+
+ggplot(team_corr, aes(x = cor)) +
+  geom_histogram(bins = 20) +
+  labs(title = "Correlation between Adjusted Offensive Efficiency and Adjusted Defensive Efficiency for each team", x = "Correlation", y = "Frequency")
+```
+
+Question 8: What is the correlation between turnover rate, steal rate and win percentage?
+```{r, eval=TRUE, echo=TRUE, message=FALSE, warning=FALSE}
+correlation_tor_steal_winpercent <- cor(cbb[c("TOR", "TORD", "WinPercent")])
+corrplot(correlation_tor_steal_winpercent, method = "circle")
 ```
