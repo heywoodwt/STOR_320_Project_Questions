@@ -20,6 +20,3 @@ rmarkdown::render("main_markdown.rmd")
 
 `CollegeBasketball.csv` holds the team-season data.
 
-## License
-
-MIT
